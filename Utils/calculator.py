@@ -5,7 +5,11 @@ class Calculator:
             if not x.isdigit():
                 return False
         return True
-
+    def secure_for_divide(self, arr):
+        for y in arr[1:]:
+            if y == 0:
+                return False
+        return True
     def select_operation(self, op):
         match op:
             case "+":
@@ -56,6 +60,8 @@ class Calculator:
                 int_x = list(map(int, x))
                 if (self.is_correct(x) == False):
                     print("Wprowadzone liczby nie są poprawne")
+                elif (self.secure_for_divide(int_x) == False):
+                    print("Nie można dzielić przez zero")
                 else:
                     rtn = int_x[0]
                     for i in int_x[1:]:
